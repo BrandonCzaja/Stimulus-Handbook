@@ -5,7 +5,69 @@
   <link rel="stylesheet" href="main.css">
   <script src="bundle.js" async></script>
 </head>
-<body>
-  <h1 data-controller="example"></h1>
+<body data-controller="hello">
+  <div>
+    <h2>Section 2: Hello, Stimulus</h2>
+    <input data-hello-target="name" type="text">
+    <button data-action="click->hello#greet">Greet</button>
+  </div>
+  
+  <br>
+
+  <div>
+    <div data-controller="clipboard">
+      <h2>Section 3: Building Something Real</h2>
+      PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
+      <button data-action="clipboard#copy">Copy to Clipboard</button>
+    </div>
+    <div data-controller="clipboard">
+      PIN: <input data-clipboard-target="source" type="text" value="5678" readonly>
+      <button data-action="clipboard#copy">Copy to Clipboard</button>
+    </div>
+    <div data-controller="clipboard">
+      PIN: <textarea data-clipboard-target="source">9012</textarea>
+      <a href="#" data-action="clipboard#copy">Copy to Clipboard</a>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <div data-controller="clipboard" data-clipboard-supported-class="clipboard--supported">
+      <h2>Section 4: Designing for Resilience</h2>
+      PIN: <input data-clipboard-target="source" type="text" value="1234">
+      <button data-action="clipboard#copy" class="clipboard-button">Copy to Clipboard</button>
+      <p>Go to browser settings and disable JavaScript to remove button from page</p>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <div data-controller="slideshow" data-slideshow-index-value="1">
+      <h2>Section 5: Managing State</h2>
+      <button data-action="slideshow#previous">Previous</button>
+      <button data-action="slideshow#next">Next</button>
+      <div data-slideshow-target="slide">🐵</div>
+      <div data-slideshow-target="slide">🙈</div>
+      <div data-slideshow-target="slide">🙉</div>
+      <div data-slideshow-target="slide">🙊</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <h2>Section 6: Working With External Resources</h2>
+    <div data-controller="content-loader"
+      data-content-loader-url-value="/messages.html"
+      data-content-loader-refresh-interval-value="5000">
+    </div>
+
+    <div data-controller="content-loader">
+      <a href="#" data-content-loader-url-param="/messages.html" data-action="content-loader#load">Messages</a>
+      <a href="#" data-content-loader-url-param="/comments.html" data-action="content-loader#load">Comments</a>
+    </div>
+  </div>
 </body>
 </html>
